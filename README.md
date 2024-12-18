@@ -1,3 +1,5 @@
+[![Java Maven Build Test](https://github.com/deepaksorthiya/spring-boot-3-redis-cache/actions/workflows/maven-build.yml/badge.svg)](https://github.com/deepaksorthiya/spring-boot-3-redis-cache/actions/workflows/maven-build.yml)
+
 # Getting Started
 
 ### Requirements:
