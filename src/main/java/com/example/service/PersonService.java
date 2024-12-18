@@ -2,6 +2,7 @@ package com.example.service;
 
 import com.example.model.Person;
 import com.example.repo.PersonRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
@@ -20,7 +21,7 @@ public class PersonService {
         this.personRepository = personRepository;
     }
 
-    @CachePut(cacheNames = {"PERSON_CACHE"}, key = "#result.personId")
+    @CachePut(cacheNames = {PERSON_CACHE}, key = "#result.personId")
     public Person savePerson(Person person) {
         return this.personRepository.save(person);
     }
@@ -32,7 +33,7 @@ public class PersonService {
 
     @Cacheable(cacheNames = {PERSON_CACHE})
     public Person getPerson(@PathVariable int personId) {
-        return this.personRepository.findById(personId).get();
+        return this.personRepository.findById(personId).orElseThrow(EntityNotFoundException::new);
     }
 
     @CacheEvict(cacheNames = {PERSON_CACHE})
@@ -46,5 +47,6 @@ public class PersonService {
 
     @CacheEvict(cacheNames = {PERSON_CACHE}, allEntries = true)
     public void deleteAllPersonFromCache() {
+        // remove all entries from cache
     }
 }
