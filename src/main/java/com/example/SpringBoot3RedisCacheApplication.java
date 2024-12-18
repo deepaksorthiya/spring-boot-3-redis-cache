@@ -9,5 +9,4 @@ public class SpringBoot3RedisCacheApplication {
     public static void main(String[] args) {
         SpringApplication.run(SpringBoot3RedisCacheApplication.class, args);
     }
-
 }

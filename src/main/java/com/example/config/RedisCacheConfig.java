@@ -1,6 +1,9 @@
 package com.example.config;
 
+import org.springframework.cache.annotation.CachingConfigurer;
 import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.cache.interceptor.CacheErrorHandler;
+import org.springframework.cache.interceptor.LoggingCacheErrorHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.cache.RedisCacheConfiguration;
@@ -13,7 +16,7 @@ import java.time.Duration;
 
 @EnableCaching
 @Configuration
-public class RedisCacheConfig {
+public class RedisCacheConfig implements CachingConfigurer {
 
     @Bean
     public RedisCacheManager redisCacheManager(RedisConnectionFactory connectionFactory) {
@@ -24,6 +27,11 @@ public class RedisCacheConfig {
                         .disableCachingNullValues()
                         .serializeValuesWith(jsonSerializer))
                 .build();
+    }
+
+    @Override
+    public CacheErrorHandler errorHandler() {
+        return new LoggingCacheErrorHandler(true);
     }
 
 }
