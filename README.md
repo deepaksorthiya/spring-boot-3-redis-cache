@@ -5,29 +5,29 @@
 ### Requirements:
 
 ```
-Git: 2.47.1
-Spring Boot: 3.4.1
+Git: 2.49.0
+Spring Boot: 3.4.5
 Maven: 3.9+
-Redis Server Tested On: 7.4.0
-Java: 17
+Redis Server Tested On: 7.4.2
+Java: 21
 Database : H2-2.2.224
-Docker Desktop: Tested on 4.36.0
+Docker Desktop: Tested on 4.41.0
 ```
 
-### Clone this repository:
+## Clone this repository:
 
 ```bash
 git clone https://github.com/deepaksorthiya/spring-boot-3-redis-cache.git
 cd spring-boot-3-redis-cache
 ```
 
-### Build Project:
+## Build Project:
 
 ```bash
-./mvnw clean package
+./mvnw clean package -DskipTests
 ```
 
-### Run project
+## Run project
 
 Set up a Docker local environment on your machine by running these commands in the terminal:
 
@@ -39,7 +39,7 @@ Set up a Docker local environment on your machine by running these commands in t
     ```bash
     ./mvnw spring-boot:run
 
-### Reference Documentation
+## Reference Documentation
 
 For further reference, please consider the following sections:
 
@@ -52,7 +52,7 @@ For further reference, please consider the following sections:
 * [Validation](https://docs.spring.io/spring-boot//io/validation.html)
 * [Flyway Migration](https://docs.spring.io/spring-boot/how-to/data-initialization.html#howto.data-initialization.migration-tool.flyway)
 
-### Guides
+## Guides
 
 The following guides illustrate how to use some features concretely:
 
@@ -64,7 +64,7 @@ The following guides illustrate how to use some features concretely:
 * [Validation](https://spring.io/guides/gs/validating-form-input/)
 * [Accessing data with MySQL](https://spring.io/guides/gs/accessing-data-mysql/)
 
-### Testcontainers support
+## Testcontainers support
 
 This project
 uses [Testcontainers at development time](https://docs.spring.io/spring-boot/3.4.0/reference/features/dev-services.html#features.dev-services.testcontainers).

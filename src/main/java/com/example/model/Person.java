@@ -3,16 +3,16 @@ package com.example.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
+
+import java.util.Objects;
 
 @Entity
 @Getter
 @Setter
 @ToString
 @NoArgsConstructor
+@AllArgsConstructor
 public class Person {
 
     @Id
@@ -26,4 +26,15 @@ public class Person {
         this.lastName = lastName;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        return personId == person.personId;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(personId);
+    }
 }

@@ -35,7 +35,7 @@ public class PersonService {
 
     @Cacheable(cacheNames = {PERSON_CACHE})
     public Person getPerson(@PathVariable int personId) {
-        return this.personRepository.findById(personId).orElseThrow(EntityNotFoundException::new);
+        return fetchPersonFromDatabase(personId);
     }
 
     @CacheEvict(cacheNames = {PERSON_CACHE})
@@ -51,5 +51,16 @@ public class PersonService {
     public void deleteAllPersonFromCache() {
         // remove all entries from cache
         log.info("Deleting all persons from cache");
+    }
+
+    // Simulating a database or external service call
+    public Person fetchPersonFromDatabase(int personId) {
+        // In a real application, this would fetch from DB
+        try {
+            Thread.sleep(3000); // Simulate delay
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+        return this.personRepository.findById(personId).orElseThrow(EntityNotFoundException::new);
     }
 }
